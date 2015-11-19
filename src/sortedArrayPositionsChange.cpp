@@ -29,8 +29,7 @@ void * sortedArrayPositionsChange(int *Arr, int len)
 		temp = Arr[i];
 		Arr[i] = Arr[j];
 		Arr[j] = temp;
-		for (i = 0; i < len; i++)
-			printf("%d ", Arr[i]);
+		
 		return Arr;
 	}
 }
