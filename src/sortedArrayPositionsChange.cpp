@@ -11,25 +11,44 @@ ERROR CASES: Return NULL for invalid Inputs.
 NOTES:
 */
 #include <stdio.h>
+#include<conio.h>
+
 
 void * sortedArrayPositionsChange(int *Arr, int len)
 {
-	int i, j, temp;
+	int i, j, temp, swap1 = -1, swap2 = -1;
 	if (Arr == NULL || len < 0)
 		return NULL;
 	else
 	{
 		for (i = 0; i < len; i++)
+		{
 			if (Arr[i] > Arr[i + 1])
+			{
+				swap1 = i;
 				break;
-
+			}
+		}
 		for (j = len - 1; j >= 0; j--)
+		{
 			if (Arr[j] < Arr[j - 1])
+			{
+				swap2 = j;
 				break;
-		temp = Arr[i];
-		Arr[i] = Arr[j];
-		Arr[j] = temp;
-		
-		return Arr;
+			}
+		}
+		if (swap1 == -1 || swap2 == -1)
+		{
+			return NULL;
+		}
+		else
+		{
+			temp = Arr[swap1];
+			Arr[swap1] = Arr[swap2];
+			Arr[swap2] = temp;
+			return Arr;
+		}
 	}
 }
+
+
