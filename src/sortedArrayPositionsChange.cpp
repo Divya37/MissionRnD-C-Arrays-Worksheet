@@ -10,10 +10,27 @@ ERROR CASES: Return NULL for invalid Inputs.
 
 NOTES:
 */
-
 #include <stdio.h>
 
 void * sortedArrayPositionsChange(int *Arr, int len)
 {
-	return NULL;
+	int i, j, temp;
+	if (Arr == NULL || len < 0)
+		return NULL;
+	else
+	{
+		for (i = 0; i < len; i++)
+			if (Arr[i] > Arr[i + 1])
+				break;
+
+		for (j = len - 1; j >= 0; j--)
+			if (Arr[j] < Arr[j - 1])
+				break;
+		temp = Arr[i];
+		Arr[i] = Arr[j];
+		Arr[j] = temp;
+		for (i = 0; i < len; i++)
+			printf("%d ", Arr[i]);
+		return Arr;
+	}
 }
